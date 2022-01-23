@@ -61,5 +61,8 @@ macx {
 
 DISTFILES += \
     qml/PropertySearchMainItem.qml \
+    qml/model/HttpClient.qml \
+    qml/model/Logic.qml \
+    qml/model/SearchDataModel.qml \
     qml/pages/PropertySearchMainPage.qml \
     qml/pages/SearchPage.qml

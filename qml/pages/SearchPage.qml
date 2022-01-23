@@ -82,22 +82,7 @@ Page {
     }
 
     function search() {
-        HttpRequest.get("http://jsonplaceholder.typicode.com/posts")
-        .then(function(res) {
-            var content = res.text;
-            try {
-                console.debug(content);
-                var obj = JSON.parse(content);
-            }
-            catch (err) {
-                console.error(err);
-                return;
-            }
-            console.debug("result parse success");
-        })
-        .catch(function(err) {
-            console.error(err);
-        })
+        logic.searchListings(searchInput.text, true);
     }
 
     function showListings(isFavorites) {
