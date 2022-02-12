@@ -22,8 +22,7 @@ Item {
 
         function responseCallback (obj) {
             var response = obj.response;
-            var apiCode = response.application_response_code;
-            console.debug("Code:", apiCode);
+            console.debug("Debug:");
         }
     }
 

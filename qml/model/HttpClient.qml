@@ -1,6 +1,6 @@
 import QtQuick 2.0
 import Felgo 3.0
-import QSslSocket 1.0
+// import QSslSocket 1.0
 
 Item {
 
@@ -12,7 +12,7 @@ Item {
 
     Item {
         id: _;
-        readonly property string serverUrl: "http://api.nestoria.co.uk/api?country=us&pretty=1&encoding=json&listing_type=buy";
+        readonly property string serverUrl: "http://jsonplaceholder.typicode.com/posts";
         property var prevParams: ({});
 
         function buildUrl (params) {
@@ -28,7 +28,7 @@ Item {
             var url = buildUrl(params);
             console.debug("Method:" + method + " URL: " + url);
 
-            supportsSsl()
+            // supportsSsl()
 
             HttpRequest.get(url)
             .then(function(res) {
@@ -40,7 +40,8 @@ Item {
                     console.error(err);
                     return;
                 }
-                console.debug("Parse success")
+                console.debug("Parse success", obj[0]);
+                callback(obj);
             })
             .catch(function(err) {
                 console.error(err);
@@ -51,19 +52,11 @@ Item {
     }
 
     function search(text, callback) {
-        _.sendRequest({
-            action: "search_listings",
-            page: 1,
-            place_name: text
-        }, callback);
+        _.sendRequest({}, callback);
     }
 
     function searchByLocation(lat, lon, callback) {
-        _.sendRequest({
-            action: "search_listings",
-            page: 1,
-            centre_point: lat + "," + lon
-        }, callback);
+        _.sendRequest({}, callback);
     }
 
     function repeatForPage (page, callback) {
